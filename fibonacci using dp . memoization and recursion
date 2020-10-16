@@ -1,0 +1,51 @@
+import time
+def dps(n):
+    a,b=0,1
+    for i in range(2,n+1):
+        c=a+b
+        a,b=b,c
+    return c
+def dp(n):
+    p=[0]*(n+1)
+    p[0]=0
+    p[1]=1
+    for i in range(2,n+1):
+        p[i]=p[i-1]+p[i-2]
+    return p[n]
+
+def fib(n):
+    if n==1 or n==0:
+        return  n
+    return fib(n-1)+fib(n-2)
+def fibmemo(n,l):
+    if n==1 or n==0:
+        l[n]=n
+        return l[n]
+    if l[n]!=-1:
+        return l[n]
+    else:
+        l[n]=fibmemo(n-1,l)+fibmemo(n-2,l)
+        return l[n]
+
+n=int(input())
+
+
+
+l=[-1]*(n+1)
+t0=time.time()
+print(dps(n))
+t1=time.time()
+print("time:", t1-t0)
+
+print(dp(n))
+t2=time.time()
+print("time:", t2-t1)
+
+
+print(fibmemo(n,l))
+t3=time.time()
+print("time:", t3-t2)
+
+print(fib(n))
+t4=time.time()
+print("time:", t4-t3)
