@@ -1,0 +1,12 @@
+from functools import reduce
+
+st = input().split(":")
+
+li = list(map(int, list(st[1])))
+
+num = sum([i * i for i in li])
+if num % 2 == 0:
+    newst = st[0][-1]+st[0][:-1]
+else:
+    newst = st[0][2:]+st[0][:2]
+print(newst)
